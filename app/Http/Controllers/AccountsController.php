@@ -11,4 +11,10 @@ class AccountsController extends Controller
     	return view('accounts.index')
     		->with('accounts', \App\Account::get());
     }
+
+    public function show($accountId) 
+    {
+    	return view('accounts.show')
+    		->with('account', \App\Account::findOrFail($accountId));
+    }
 }

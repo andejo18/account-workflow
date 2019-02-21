@@ -15,4 +15,10 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-Route::get('accounts/index', 'AccountsController@index');
+/* Accounts Routes, grouped */
+Route::group([], function () {
+	Route::get('accounts/index', 'AccountsController@index');
+
+	Route::get('accounts/{id}', 'AccountsController@show');
+});
+
