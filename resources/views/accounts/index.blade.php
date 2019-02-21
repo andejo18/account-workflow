@@ -48,7 +48,11 @@
                 font-size: 84px;
             }
 
-            .accounts > a {
+            .accounts ul {
+                list-style: none;
+            }
+
+            .accounts ul li > a {
                 color: #636b6f;
                 padding: 0 25px;
                 font-size: 13px;
@@ -85,9 +89,13 @@
                 </div>
 
                 <div class="accounts">
+                    <ul>
                     @foreach ($accounts as $account)
-                        <a href="{{ route('accounts.show', ['accountId' => $account->id]) }}">{{ $account->first_name }}</a>
+                        <li>
+                            <a href="{{ route('accounts.show', ['accountId' => $account->id]) }}">{{ $account->first_name }}</a>
+                        </li>
                     @endforeach
+                    <ul>
                 </div>
             </div>
         </div>
