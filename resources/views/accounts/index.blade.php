@@ -8,6 +8,10 @@
                 Accounts Index
             </div>
 
+            <a href="{{ route('accounts.create') }}">
+                <button class="btn btn-default">Create a New Account</button>
+            </a>
+
             <div class="accounts">
                 <ul>
                 @foreach ($accounts as $account)

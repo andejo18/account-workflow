@@ -12,13 +12,16 @@
 */
 
 Route::get('/', function () {
-    return view('welcome');
+    return view('pages.welcome');
 });
 
 /* Accounts Routes, grouped */
 Route::group([], function () {
 	Route::get('accounts/index', 'AccountsController@index')->name('accounts.index');
 
-	Route::get('accounts/{id}', 'AccountsController@show')->name('accounts.show');;
-});
+	Route::get('accounts/create', 'AccountsController@create')->name('accounts.create');
 
+	Route::post('accounts/store', 'AccountsController@store')->name('accounts.store');
+
+	Route::get('accounts/{id}', 'AccountsController@show')->name('accounts.show');
+});
