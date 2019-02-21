@@ -9,14 +9,25 @@ class AccountsController extends Controller
 {
     public function index() 
     {
+    	$accounts = \DB::table('accounts')
+    		->join('account_types', 'accounts.account_type_id', '=', 'account_types.id')
+    		->select('accounts.*', 'account_types.account_type')
+    		->get();
+
     	return view('accounts.index')
-    		->with('accounts', \App\Account::get());
+    		->with('accounts', $accounts);
     }
 
     public function show($accountId) 
     {
+    	$account = \DB::table('accounts')
+    		->join('account_types', 'accounts.account_type_id', '=', 'account_types.id')
+    		->select('accounts.*', 'account_types.account_type')
+    		->where('accounts.id', $accountId)
+    		->get();
+
     	return view('accounts.show')
-    		->with('account', \App\Account::findOrFail($accountId));
+    		->with('account', $account[0]);
     }
 
     public function create()
