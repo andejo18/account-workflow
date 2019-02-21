@@ -25,3 +25,7 @@ Route::group([], function () {
 
 	Route::get('accounts/{id}', 'AccountsController@show')->name('accounts.show');
 });
+
+Route::group([], function () {
+	Route::get('places/index', 'PlacesController@index')->name('places.index');
+});
