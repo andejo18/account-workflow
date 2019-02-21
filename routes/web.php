@@ -17,8 +17,8 @@ Route::get('/', function () {
 
 /* Accounts Routes, grouped */
 Route::group([], function () {
-	Route::get('accounts/index', 'AccountsController@index');
+	Route::get('accounts/index', 'AccountsController@index')->name('accounts.index');
 
-	Route::get('accounts/{id}', 'AccountsController@show');
+	Route::get('accounts/{id}', 'AccountsController@show')->name('accounts.show');;
 });
 
