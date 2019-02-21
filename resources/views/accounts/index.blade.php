@@ -16,7 +16,8 @@
                 <ul>
                 @foreach ($accounts as $account)
                     <li>
-                        <a href="{{ route('accounts.show', ['accountId' => $account->id]) }}">{{ $account->first_name }}</a>
+                        <a href="{{ route('accounts.show', ['accountId' => $account->id]) }}">{{ $account->first_name.' '.$account->last_name }}</a>
+                        &nbsp; Account Type: {{ $account->account_type_id }}
                     </li>
                 @endforeach
                 </ul>
