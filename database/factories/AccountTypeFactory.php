@@ -7,6 +7,7 @@ use Faker\Generator as Faker;
 $factory->define(App\AccountType::class, function (Faker $faker) {
     return [
         'account_type' => $faker->word,
-        'description' => $faker->paragraph
+        'description' => $faker->paragraph,
+        'cost' => $faker->randomFloat(2, 0, 10000)
     ];
 });
