@@ -12,6 +12,6 @@ $factory->define(App\Account::class, function (Faker $faker) {
         'last_name' => $faker->lastName,
         'email' => $faker->email,
         'account_type_id' => $faker->randomElement($accountTypeIds),
-        'active' => false
+        'active' => $faker->boolean
     ];
 });
