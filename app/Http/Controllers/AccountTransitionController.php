@@ -68,9 +68,11 @@ class AccountTransitionController extends Controller
             case \App\Transition::$actionDeactivate:
                 $this->deactivateAccount($accountId);
                 break;
+                
             case \App\Transition::$actionLogAMessage:
                 $this->logMessage();
                 break;
+
             default:
                 throw new Exception('Action requires new handling.');
         }
@@ -90,6 +92,6 @@ class AccountTransitionController extends Controller
     */
     private function logMessage($message = '')
     {
-
+        Log::debug('Placeholder');
     }
 }
