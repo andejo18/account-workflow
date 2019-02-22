@@ -12,7 +12,6 @@ class AccountsTableSeeder extends Seeder
      */
     public function run()
     {
-
     	// TODO Logic to figure out the default place based on acc.active.
         $accounts = factory(App\Account::class, 10)
 			->create()

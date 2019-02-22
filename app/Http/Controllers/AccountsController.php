@@ -22,7 +22,8 @@ class AccountsController extends Controller
     {
     	$account = \DB::table('accounts')
     		->join('account_types', 'accounts.account_type_id', '=', 'account_types.id')
-    		->select('accounts.*', 'account_types.account_type')
+            ->join('account_place', 'accounts.id', '=', 'account_place.account_id')
+    		->select('accounts.*', 'account_types.account_type', 'account_place.place')
     		->where('accounts.id', $accountId)
     		->get();
 
@@ -55,6 +56,13 @@ class AccountsController extends Controller
     	$account = new \App\Account($validatedData);
     	$account->active = false;
     	$account->save();
+
+        $accountPlace = \App\AccountPlace::create([
+            'account_id' => $account->id,
+            'place' => 'Setup',
+            'version' => 0
+        ]);
+        $accountPlace->save();
 
     	return redirect()->route('accounts.index');
     }
