@@ -2,8 +2,9 @@
 @section('content')
     <div class="container">
         <div class="row">
-            <h1>Submit a link</h1>
+            
             <form action="{{ route('accounts.store') }}" method="post">
+                <h1>Create a New Account</h1>
                 @if ($errors->any())
                     <div class="alert alert-danger" role="alert">
                         Please fix the following errors
@@ -36,8 +37,13 @@
                 </div>
 
                 <div class="form-group{{ $errors->has('account_type_id') ? ' has-error' : '' }}">
-                    <label for="account_type_id">Account Type ID</label>
-                    <input type="text" class="form-control" id="account_type_id" name="account_type_id" placeholder="Account Type ID" value="{{ old('account_type_id') }}">
+                    <label for="account_type_id">Account Type</label>
+                    <select name="account_type_id" class="form-control">
+                    <option></option>
+                    @foreach($accountTypes as $accountType)
+                    <option value="{{ $accountType->id }}"> {{ $accountType->account_type . ' - Cost/Month: $' . $accountType->cost }}</option>
+                    @endforeach
+                    </select>
                     @if($errors->has('account_type_id'))
                         <span class="help-block">{{ $errors->first('account_type_id') }}</span>
                     @endif

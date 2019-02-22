@@ -5,7 +5,7 @@
 
         <div class="content">
             <div class="title m-b-md">
-                Are you sure you want this transition?
+                Are you sure you want to transition this account?
             </div>
 
             <div class="title m-b-md">
