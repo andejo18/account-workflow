@@ -11,7 +11,8 @@ class AccountsController extends Controller
     {
     	$accounts = \DB::table('accounts')
     		->join('account_types', 'accounts.account_type_id', '=', 'account_types.id')
-    		->select('accounts.*', 'account_types.account_type')
+            ->join('account_place', 'accounts.id', '=', 'account_place.account_id')
+    		->select('accounts.*', 'account_types.account_type', 'account_types.cost', 'account_place.place')
     		->get();
 
     	return view('accounts.index')
@@ -24,7 +25,7 @@ class AccountsController extends Controller
     	$account = \DB::table('accounts')
     		->join('account_types', 'accounts.account_type_id', '=', 'account_types.id')
             ->join('account_place', 'accounts.id', '=', 'account_place.account_id')
-    		->select('accounts.*', 'account_types.account_type', 'account_place.place')
+    		->select('accounts.*', 'account_types.account_type', 'account_types.cost', 'account_place.place')
     		->where('accounts.id', $accountId)
     		->get()[0];
 
