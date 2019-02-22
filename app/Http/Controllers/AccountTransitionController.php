@@ -92,6 +92,6 @@ class AccountTransitionController extends Controller
     */
     private function logMessage($message = '')
     {
-        Log::debug('Placeholder');
+        \Log::debug('Placeholder');
     }
 }
