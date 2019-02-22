@@ -3,13 +3,13 @@
 <div class="container">
 	<div class="flex-center position-ref full-height">
 	    <div class="content">
-	        <div class="title m-b-md">
-	            Account Workflow
-	        </div>
+	        <a href="{{ route('accounts.create') }}">
+                <button class="btn btn-default">Create a New Account</button>
+            </a>
 
-	        <div class="links">
-	            <a href="{{ route('accounts.index')}}">Accounts List</a>
-	        </div>
+            <a href="{{ route('accounts.index') }}">
+                <button class="btn btn-default">Accounts List</button>
+            </a>
 	    </div>
 	</div>
 </div>
