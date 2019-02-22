@@ -11,6 +11,15 @@
                 Account Type: {{ $account->account_type }}<br/>
                 Active: {{ $account->active }}
             </div>
+
+            <title>Pick a transition</title>
+            @foreach ($transitions as $transition)
+            <div class="title m-b-md">
+                <a href="">
+                    <button class="btn btn-default">{{ $transition->name }}</button>
+                </a>
+            </div>
+            @endforeach
         </div>
     </div>
 </div>

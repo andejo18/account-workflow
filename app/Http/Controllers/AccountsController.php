@@ -20,15 +20,20 @@ class AccountsController extends Controller
 
     public function show($accountId) 
     {
+        // This is bad because the relationships aren't set up.
     	$account = \DB::table('accounts')
     		->join('account_types', 'accounts.account_type_id', '=', 'account_types.id')
             ->join('account_place', 'accounts.id', '=', 'account_place.account_id')
     		->select('accounts.*', 'account_types.account_type', 'account_place.place')
     		->where('accounts.id', $accountId)
-    		->get();
+    		->get()[0];
 
-    	return view('accounts.show')
-    		->with('account', $account[0]);
+        $availableTransitions = $this->availableTransitions($account->place);
+
+    	return view('accounts.show', [
+                'account' => $account,
+                'transitions' => $availableTransitions
+            ]);
     }
 
     public function create()
@@ -59,11 +64,20 @@ class AccountsController extends Controller
 
         $accountPlace = \App\AccountPlace::create([
             'account_id' => $account->id,
-            'place' => 'Setup',
+            'place' => 'Confirmation',
             'version' => 0
         ]);
         $accountPlace->save();
 
     	return redirect()->route('accounts.index');
+    }
+
+    private function availableTransitions($place)
+    {
+        $transitions = \DB::table('transitions')
+                            ->where('from_place', $place)
+                            ->get();
+        
+        return $transitions;
     }
 }

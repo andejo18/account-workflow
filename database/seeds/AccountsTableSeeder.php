@@ -19,7 +19,7 @@ class AccountsTableSeeder extends Seeder
 				factory(App\AccountPlace::class)
 					->create([
 						'account_id' => $acct->id,
-				        'place' => 'Setup',
+				        'place' => 'Confirmation',
 				        'version' => 0
 					]);
 			});
