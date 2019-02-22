@@ -15,7 +15,7 @@
             <title>Pick a transition</title>
             @foreach ($transitions as $transition)
             <div class="title m-b-md">
-                <a href="">
+                <a href="{{ route('accounts.transition.show', ['id' => $account->id,'transition' => $transition->name]) }}">
                     <button class="btn btn-default">{{ $transition->name }}</button>
                 </a>
             </div>

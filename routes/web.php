@@ -24,8 +24,15 @@ Route::group([], function () {
 	Route::post('accounts/store', 'AccountsController@store')->name('accounts.store');
 
 	Route::get('accounts/{id}', 'AccountsController@show')->name('accounts.show');
+
+	Route::get('accounts/{id}/transition/show/{transition}', 'AccountTransitionController@show')->name('accounts.transition.show');
+
+	Route::get('accounts/{id}/transition/store/{transition}', 'AccountTransitionController@store')->name('accounts.transition.store');
 });
+
+
 
 Route::group([], function () {
 	Route::get('places/index', 'PlacesController@index')->name('places.index');
 });
+
