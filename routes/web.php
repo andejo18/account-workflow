@@ -11,9 +11,7 @@
 |
 */
 
-Route::get('/', function () {
-    return view('pages.welcome');
-});
+Route::get('/', 'DashboardController@index')->name('dashboard.index');
 
 /* Accounts Routes, grouped */
 Route::group([], function () {
