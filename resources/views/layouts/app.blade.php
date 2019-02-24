@@ -7,7 +7,7 @@
     <!-- CSRF Token -->
     <meta name="csrf-token" content="{{ csrf_token() }}">
 
-    <title>{{ config('app.name', 'Laravel') }}</title>
+    <title>@yield('title', config('app.name'))</title>
 
     <!-- Scripts -->
     <script src="{{ asset('js/app.js') }}" defer></script>
@@ -33,7 +33,11 @@
                 <div class="collapse navbar-collapse" id="navbarSupportedContent">
                     <!-- Left Side Of Navbar -->
                     <ul class="navbar-nav mr-auto">
-
+                        @foreach (['one', 'two', 'three', 'four'] as $navItem)
+                            <li class="navbar-nav nav-item">
+                                <a class="nav-link active" href="#">Item {{ $navItem }}</a>
+                            </li>
+                        @endforeach
                     </ul>
                 </div>
             </div>
