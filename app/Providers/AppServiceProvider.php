@@ -23,6 +23,13 @@ class AppServiceProvider extends ServiceProvider
      */
     public function boot()
     {
-        //
+        $navItems = [
+            'accounts' => [
+                'title' => 'Accounts',
+                'route' => 'accounts.index'
+            ]
+        ];
+
+        view()->share('navItems', $navItems);
     }
 }

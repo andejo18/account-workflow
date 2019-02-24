@@ -33,9 +33,9 @@
                 <div class="collapse navbar-collapse" id="navbarSupportedContent">
                     <!-- Left Side Of Navbar -->
                     <ul class="navbar-nav mr-auto">
-                        @foreach (['one', 'two', 'three', 'four'] as $navItem)
+                        @foreach ($navItems as $navItem)
                             <li class="navbar-nav nav-item">
-                                <a class="nav-link active" href="#">Item {{ $navItem }}</a>
+                                <a class="nav-link active" href="{{ route($navItem['route']) }}">{{ $navItem['title'] }}</a>
                             </li>
                         @endforeach
                     </ul>
