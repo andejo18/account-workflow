@@ -1,4 +1,9 @@
 @extends('layouts.app')
+
+@section('title')
+{{ $account->account_type }} Account
+@endsection
+
 @section('content')
 <div class="container">
     <div class="flex-center position-ref full-height">
